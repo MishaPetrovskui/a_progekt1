@@ -1,0 +1,15 @@
+import requests
+import random
+page = random.randint(1, 7438)
+pageSize = 1
+url = f'https://api.disneyapi.dev/character?pageSize={pageSize}&page={page}'
+currensies_response = requests.get(url)
+if currensies_response.ok:
+    print(f"Name: \n\t{currensies_response.json()['data']['name']}".replace('[]', "-"))
+    print(f"List of movies: \n\t{currensies_response.json()['data']['films']}".replace('[]', "-"))
+    print(f"Short film: \n\t{currensies_response.json()['data']['shortFilms']}".replace('[]', "-"))
+    print(f"Serials: \n\t{currensies_response.json()['data']['tvShows']}".replace('[]', "-"))
+    print(f"Video games: \n\t{currensies_response.json()['data']['videoGames']}".replace('[]', "-"))
+else:
+    print('Щось пішло не так...')
+    print(f'{response.status_code=}')
