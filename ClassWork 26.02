@@ -15,4 +15,5 @@ if response.ok:
     rate = as_json[currency_to]
     print(f"{amount} {currency_from} = {round(rate * amount, 2)} {currency_to}")
 else:
-    print("Не правильно!")
+    print('Щось пішло не так...')
+    print(f'{response.status_code=}')
