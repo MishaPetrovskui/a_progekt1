@@ -1,0 +1,18 @@
+import requests
+date = input('Дата у форматі YYYY.M.D: ')
+
+address = f'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@{date}/v1/'
+currensies_url = f"{address}currencies.json"
+currensies_response = requests.get(first_url)
+currensies_list = list(currensies_response.json().keys())
+currency_from = str(input('Перша валюта: '))
+currency_to = str(input('Друга валюта: '))
+amount = int(input('Скільки?: '))
+url = f'{address}currencies/{currency_from}.json'
+response = requests.get(url)
+if response.ok:
+    as_json = response.json()[currency_from]
+    rate = as_json[currency_to]
+    print(f"{amount} {currency_from} = {round(rate * amount, 2)} {currency_to}")
+else:
+    print("Не правильно!")
