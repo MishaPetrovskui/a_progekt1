@@ -3,7 +3,7 @@ date = input('Дата у форматі YYYY.M.D: ')
 
 address = f'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@{date}/v1/'
 currensies_url = f"{address}currencies.json"
-currensies_response = requests.get(first_url)
+currensies_response = requests.get(currensies_url)
 currensies_list = list(currensies_response.json().keys())
 currency_from = str(input('Перша валюта: '))
 currency_to = str(input('Друга валюта: '))
