@@ -1,0 +1,105 @@
+1
+'''
+def text():
+    print("\"Don't compare yourself with anyone in this world…\nif you do so, you are insulting yourself.\"\nBill Gates")
+
+text()
+'''
+2
+'''
+def number(a, b):
+    for num in range(a, b + 1):
+        if num % 2 == 0:
+            print(num)
+
+a = int(input("Ведіть мінімум: "))
+b = int(input("Ведіть максимум: "))
+
+number(a, b)
+'''
+3
+'''
+def square(a, b, c):
+    if a == 1:
+        print(c)
+    elif b == 1:
+        for n in range(a):
+            for i in range((a - 1)):
+                print(c, end='')
+            print(c)
+    else:
+        for i in range(a):
+            print(c, end='')
+        print()
+        for i in range((a - 2)):
+            print(c, end = '')
+            for n in range((a - 2)):
+                print(' ', end = '')
+            print(c)
+        for i in range(a):
+            print(c, end='')
+
+a = int(input("Довжина по горизонталі та вертикалі: "))
+print("1) Повний\n2) Пустий")
+b = int(input("Ведіть ваш вибір: "))
+c = input("Ведіть знак: ")
+
+square(a, b, c)
+'''
+4
+'''
+def minimum(a, b, c, d, e):
+    if a < b and a < c and a < d and a < e:
+        print(f"перше число({a}) меньше всіх")
+    elif b < a and b < c and b < d and b < e:
+        print(f"друге число({b}) меньше всіх")
+    elif c < b and c < a and c < d and c < e:
+        print(f"третє число({c}) меньше всіх")
+    elif d < a and d < b and d < c and d < e:
+        print(f"четверте число({d}) меньше всіх")
+    elif e < a and e < b and e < c and e < d:
+        print(f"п'яте число({e}) меньше всіх")
+
+a = int(input("Ведыть перше число: "))
+b = int(input("Ведыть друге число: "))
+c = int(input("Ведыть третє число: "))
+d = int(input("Ведыть четверте число: "))
+e = int(input("Ведыть п'яте число: "))
+
+minimum(a, b, c, d, e)
+'''
+5
+'''
+def multiplication(a, b):
+    final_num = 1
+    if a > b:
+        a, b = b, a
+    for i in range(a, b):
+        final_num *= i
+    print(final_num)
+
+a = int(input("Ведіть перше число: "))
+b = int(input('Ведіть друге число: '))
+
+multiplication(a, b)
+'''
+6
+'''
+def num(a):
+    print(len(str(a)))
+
+a = int(input('Ведіть число: '))
+
+num(a)
+'''
+7
+'''
+def palindrome(i):
+    a = str(i)
+    if (a[0], a[1], a[2]) == (a[5], a[4], a[3]):
+        return True
+    else:
+        return False
+
+print(palindrome(int(input('Шестизначне число'))))
+'''
