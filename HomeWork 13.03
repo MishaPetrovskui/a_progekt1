@@ -1,15 +1,24 @@
 import requests
 import random
+
 page = random.randint(1, 7438)
-pageSize = 1
-url = f'https://api.disneyapi.dev/character?pageSize={pageSize}&page={page}'
+url = f'https://api.disneyapi.dev/character?pageSize=1&page={page}'
 response = requests.get(url)
+as_json = response.json()['data']
 if response.ok:
-    print(f"Name: \n\t{response.json()['data']['name']}".replace('[]', "-"))
-    print(f"List of movies: \n\t{response.json()['data']['films']}".replace('[]', "-"))
-    print(f"Short film: \n\t{response.json()['data']['shortFilms']}".replace('[]', "-"))
-    print(f"Serials: \n\t{response.json()['data']['tvShows']}".replace('[]', "-"))
-    print(f"Video games: \n\t{response.json()['data']['videoGames']}".replace('[]', "-"))
+    print(f"Ім\'я: {as_json['name']}")
+    print('Films:')
+    for i in range(len(as_json['films'])):
+        print("  -", as_json['films'][i].replace("[]", "-"))
+    print('Short Films:')
+    for i in range(len(as_json['shortFilms'])):
+        print("  -", as_json['shortFilms'][i].replace("[]", "-"))
+    print('TV Shows:')
+    for i in range(len(as_json['tvShows'])):
+        print("  -", as_json['tvShows'][0].replace("[]", "-"))
+    print('Games:')
+    for i in range(len(as_json['videoGames'])):
+        print("  -", as_json['videoGames'][i].replace("[]", "-"))
 else:
     print('Щось пішло не так...')
     print(f'{response.status_code=}')
