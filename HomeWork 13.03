@@ -6,7 +6,7 @@ url = f'https://api.disneyapi.dev/character?pageSize=1&page={page}'
 response = requests.get(url)
 as_json = response.json()['data']
 if response.ok:
-    print(f"Ім\'я: {as_json['name']}")
+    print(f"Ім\'я:\n  {as_json['name']}")
     print('Films:')
     for i in range(len(as_json['films'])):
         print("  -", as_json['films'][i].replace("[]", "-"))
