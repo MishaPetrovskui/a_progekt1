@@ -1,0 +1,10 @@
+import random as rnd
+
+def input_list(massage="", random=False):
+    if random:
+        return [rnd.randint(-50, 50) for _ in range(10)]
+
+list = []
+list = input("Ведіть числа: ")
+
+print(sum(list))
