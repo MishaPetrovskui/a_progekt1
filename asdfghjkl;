@@ -1,10 +1,89 @@
+1
+'''
 import random as rnd
 
 def input_list(massage="", random=False):
     if random:
         return [rnd.randint(-50, 50) for _ in range(10)]
+    while True:
+        numbers = [int(number) for number in input(massage).split()]
+        if not numbers:
+            print("Нічого нема")
+        else:
+            return numbers
 
-list = []
-list = input("Ведіть числа: ")
+def sum(list):
+    nado = int(0)
+    for i in range(len(list)):
+        nado += list[i]
+    return nado
 
-print(sum(list))
+print(sum(input_list(("Ведіть числа: "))))
+'''
+2
+'''
+import random as rnd
+
+def input_list(massage="", random=False):
+    if random:
+        return [rnd.randint(-50, 50) for _ in range(10)]
+    while True:
+        numbers = [int(number) for number in input(massage).split()]
+        if not numbers:
+            print("Нічого нема")
+        else:
+            return numbers
+
+def bubble_sort(list, sortByGrowth):
+    is_changed = True
+    while is_changed:
+        is_changed = False
+        for i in range(len(list) - 1):
+            if (list[i] > list[i + 1] and sortByGrowth) or \
+                    (list[i] < list[i + 1] and not sortByGrowth):
+                list[i], list[i + 1] = list[i + 1], list[i]
+                is_changed = True
+    return list
+
+print(bubble_sort(input_list("Ведіть числа: "), False)[0])
+'''
+3
+'''
+import random as rnd
+
+def input_list(massage="", random=False):
+    if random:
+        return [rnd.randint(-50, 50) for _ in range(10)]
+    while True:
+        numbers = [int(number) for number in input(massage).split()]
+        if not numbers:
+            print("Нічого нема")
+        else:
+            return numbers
+
+def chisla(list):
+    parni = 0
+    neparni = 0
+    dodatni = 0
+    vidyemni = 0
+    print(len(list))
+    for par in list:
+        if par % 2 == 0:
+            parni += 1
+    for nepar in list:
+        if nepar % 2 != 0:
+            neparni += 1
+    for dod in list:
+        if dod > 0:
+            dodatni += 1
+    for vid in list:
+        if vid < 0:
+            vidyemni += 1
+    print(f"Парних: {parni} \nНепарних: {neparni} \nДодатних: {dodatni} \nВід'ємних: {vidyemni}")
+
+chisla(input_list("Ведіть числа: "))
+'''
+4
+'''
+
+'''
