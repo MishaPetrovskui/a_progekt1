@@ -85,5 +85,74 @@ chisla(input_list("Ведіть числа: "))
 '''
 4
 '''
+import random as rnd
 
+def input_list(massage="", random=False):
+    if random:
+        return [rnd.randint(-50, 50) for _ in range(10)]
+    while True:
+        numbers = [int(number) for number in input(massage).split()]
+        if not numbers:
+            print("Нічого нема")
+        else:
+            return numbers
+
+def reverse_list(list):
+    reversed_list = []
+    for i in range(len(list) - 1, -1, -1):
+        reversed_list.append(list[i])
+    return reversed_list
+
+print("Перевернутий список:", reverse_list(input_list("Ведіть числа: ")))
+'''
+5
+'''
+import random as rnd
+
+def input_list(massage="", random=False):
+    if random:
+        return [rnd.randint(-50, 50) for _ in range(10)]
+    while True:
+        numbers = [int(number) for number in input(massage).split()]
+        if not numbers:
+            print("Нічого нема")
+        else:
+            return numbers
+
+def search_number(list, number):
+    podibni = 0
+    for num in list:
+        if num == number:
+            podibni += 1
+    return podibni
+
+print("Число є у списку: ", search_number(input_list("Ведіть лист: "), int(input("Введіть число, яке потрібно знайти у списку: "))))
+'''
+6
+'''
+import random as rnd
+
+def input_list(massage="", random=False):
+    if random:
+        return [rnd.randint(-50, 50) for _ in range(10)]
+    while True:
+        numbers = [int(number) for number in input(massage).split()]
+        if not numbers:
+            print("Нічого нема")
+        else:
+            return numbers
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+def factorial_list(input_list):
+    return [factorial(num) for num in input_list]
+
+print("Факторіали введених чисел:", factorial_list(input_list("Введіть числа: ")))
 '''
