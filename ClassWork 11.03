@@ -18,7 +18,7 @@ def sum(list):
         nado += list[i]
     return nado
 
-print(sum(input_list(("Ведіть числа: "))))
+print("Сума елементів списку цілих:", sum(input_list(("Ведіть числа: "))))
 '''
 2
 '''
@@ -45,7 +45,7 @@ def bubble_sort(list, sortByGrowth):
                 is_changed = True
     return list
 
-print(bubble_sort(input_list("Ведіть числа: "), False)[0])
+print("Максимальне число:", bubble_sort(input_list("Ведіть числа: "), False)[0])
 '''
 3
 '''
