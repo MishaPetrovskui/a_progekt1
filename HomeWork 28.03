@@ -1,0 +1,42 @@
+import random
+
+def choose_item(bot=False):
+    items = ['к', 'н', 'п']
+    if bot:
+        return items[random.randint(0, 2)]
+    else:
+        choice = input("Виберіть камінь (к), ножиці (н) або папір (п): ").lower()
+        while choice not in items:
+            print("Невірний вибір. Будь ласка, спробуйте ще раз.")
+            choice = input("Виберіть камінь (к), ножиці (н) або папір (п): ").lower()
+        return choice
+
+def full_name(item):
+    if item == 'к':
+        return "Камінь"
+    elif item == 'н':
+        return "Ножиці"
+    elif item == 'п':
+        return "Папір"
+
+def choose_winner(player, bot):
+    if player == bot:
+        return 'draw'
+    elif (player == 'к' and bot == 'н') or (player == 'н' and bot == 'п') or (player == 'п' and bot == 'к'):
+        return 'player'
+    elif (player == 'к' and bot == 'п') or (player == 'н' and bot == 'к') or (player == 'п' and bot == 'н'):
+        return 'bot'
+
+def action():
+    player_choice = choose_item(bot=False)
+    bot_choice = choose_item(bot=True)
+    print(f"Ви вибрали {full_name(player_choice)}, бот вибрав {full_name(bot_choice)}.")
+    winner = choose_winner(player_choice, bot_choice)
+    if winner == 'player':
+        print("Ви перемогли!")
+    elif winner == 'bot':
+        print("Бот переміг!")
+    else:
+        print("Нічия!")
+
+action()
