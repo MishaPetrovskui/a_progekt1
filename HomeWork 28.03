@@ -1,6 +1,6 @@
 import random
 
-def choose_item(bot=False):
+def choose_item(bot):
     items = ['к', 'н', 'п']
     if bot:
         return items[random.randint(0, 2)]
