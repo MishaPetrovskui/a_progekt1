@@ -15,33 +15,31 @@ dp = Dispatcher()
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
     for i in range(100):
-        await message.answer("Керя")
+        await message.answer("Добрый день!")
 
 @dp.message(Command("help"))
 async def cmd_help(message: types.Message):
-        await message.answer(text='/help - отримати довідку за командами\n/start - запустити бота\n/roll (number) - випадкове число від 1 до введенного числа')
+        await message.answer(text='/help - отримати довідку за командами\n/start - запустити бота\n/roll - випадкове число від 1 до 100\n/roll (number) - випадкове число від 1 до введенного числа\n/roll (number) (number) - випадкове число від першого числа до другого числа\n/roll (number) (number) (number)... - випадковий параметр')
         # await message.reply(text='Help command')
         # await bot.send_message(chat_id=message.chat.id, text='Help command')
 
+
 @dp.message(Command("roll"))
-async def message(message: types.Message, command: CommandObject):
-    args = command.args.split()
-    if len(args) == 2:
-        min_value = int(args[0])
-        max_value = int(args[1])
-        if min_value >= max_value:
-            await message.answer("Минимальное значение должно быть меньше максимального.")
-            return
+async def cmd_roll(message: types.Message, command: CommandObject):
+    if command.args is not None:
+        args = command.args.split()
+        if len(args) == 1:
+            max_value = int(args[0])
+            await message.answer(f'Випадкове число від 1 до {max_value}: {random.randint(1, max_value)}')
+        elif len(args) == 2:
+            min_value = int(args[0])
+            max_value = int(args[1])
+            await message.answer(f'Випадкове число від {min_value} до {max_value}: {random.randint(min_value, max_value)}')
+        else:
+            random_value = random.choice(args)
+            await message.answer(f'Випадковий параметр: {random_value}')
     else:
-        min_value = 1
-        max_value = 100
-
-    await message.answer(f"Случайное число между {min_value} и {max_value}: {random.randint(min_value, max_value)}")
-
-@dp.message()
-async def cmd_roll(message: types.Message):
-    await message.answer(message.text)
-
+        await message.answer(f'Випадкове число від 1 до 100: {random.randint(1, 100)}')
 
 # Запуск процесса поллинга новых апдейтов
 async def main():
