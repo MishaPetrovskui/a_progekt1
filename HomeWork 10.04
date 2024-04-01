@@ -37,7 +37,7 @@ async def cmd_roll(message: types.Message, command: CommandObject):
             await message.answer(f'Випадкове число від {min_value} до {max_value}: {random.randint(min_value, max_value)}')
         else:
             random_value = random.choice(args)
-            await message.answer(f'Випадковий параметр: {random_value}')
+            await message.answer(f'Випадковий параметр в {" ".join(args)}: {random_value}')
     else:
         await message.answer(f'Випадкове число від 1 до 100: {random.randint(1, 100)}')
 
