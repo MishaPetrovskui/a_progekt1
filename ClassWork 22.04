@@ -1,0 +1,54 @@
+import random
+
+
+def first():
+    number1 = int(random.randint(0,100))
+    return number1
+
+
+def second():
+    number2 = int(random.randint(0,100))
+    return number2
+
+chet = int(0)
+hizni = 3
+while True:
+    file_path = "products.txt"
+
+    first_numbers = int(first())
+    second_numbers = int(second())
+    print(hizni)
+    diya = input(f"{int(first_numbers)} + {int(second_numbers)} = ")
+    if diya == "quit":
+        print(f"Ваш рахунок: {chet}")
+        break
+    elif diya.isnumeric():
+        if int(first_numbers) + int(second_numbers) == int(diya):
+            print("Вірно")
+            chet += 1
+        else:
+            print(f"Невірно, правильна відповідь: {first_numbers + second_numbers}")
+            hizni -= 1
+            if hizni == 0:
+                print("Ти потратив всі сердечка")
+                print(f"Счет: {chet}")
+                with open(file_path, mode="r+", encoding="utf8") as file:
+                    products = file.read().split('\n')
+                if products:
+                    for product in products:
+                        if chet > int(product):
+                            with open(file_path, mode="w", encoding="utf8") as file:
+                                haha = str(chet)
+                                ha = 0
+                                products.pop(ha)
+                                file.write("\n".join(products))
+                                products.append(haha)
+                                file.write("\n".join(products))
+                                print(f'Лучший счет:\n - {products}')
+                        else:
+                            print(f'Лучший счет:\n - {products}')
+                else:
+                    print(f' - {products}')
+                break
+    else:
+        print("Це не число та quit, так що НЕВІРНО, спробуй ще раз")
