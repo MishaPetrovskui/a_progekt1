@@ -25,20 +25,23 @@ def load_leaderboard():
                 leaderboards.append((int(chet), name))
     return leaderboards
 
+
 def update_leaderboard(chet, name):
     leaderboard = load_leaderboard()
     leaderboard.append((chet, name))
     top_scores = []
-    for entry in leaderboard:
-        if len(top_scores) < 5:
-            top_scores.append(entry)
-        else:
-            max_score = max(top_scores)[0]
-            if entry[0] < max_score:
-                top_scores.remove(max(top_scores))
-                top_scores.append(entry)
+    for _ in range(5):
+        max_score = -1
+        max_entry = None
+        for entry in leaderboard:
+            if entry[0] > max_score:
+                max_score = entry[0]
+                max_entry = entry
+        if max_entry:
+            top_scores.append(max_entry)
+            leaderboard.remove(max_entry)
     with open("leaderboard.txt", "w", encoding="utf-8") as file:
-        for chet, name in top_scores[::-1]:
+        for chet, name in top_scores:
             file.write(f"{chet},{name}\n")
 
 
@@ -49,8 +52,8 @@ def display_leaderboard():
     else:
         print("Топ 5 лідерів:")
         for i in range(len(leaderboards)):
-            chet, name = leaderboards[i]
-            print(f"{i + 1}. {name}: {chet}")
+            score, name = leaderboards[i]
+            print(f"{i + 1}. {name}: {score}")
 
 def main():
     chet = 0
