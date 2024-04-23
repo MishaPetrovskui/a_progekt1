@@ -14,7 +14,7 @@ def validate_input(user_input, expected_result):
         else:
             return "Невірно"
     else:
-        return "Невірно"
+        return "Невірно, це не число"
 
 def load_leaderboard():
     leaderboards = []
@@ -52,8 +52,8 @@ def display_leaderboard():
     else:
         print("Топ 5 лідерів:")
         for i in range(len(leaderboards)):
-            score, name = leaderboards[i]
-            print(f"{i + 1}. {name}: {score}")
+            chet, name = leaderboards[i]
+            print(f"{i + 1}. {name}: {chet}")
 
 def main():
     chet = 0
@@ -82,6 +82,6 @@ def main():
                 display_leaderboard()
                 break
         else:
-            print("Невірно")
+            print("Невірно, це не число")
 
 main()
