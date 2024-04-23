@@ -62,15 +62,15 @@ def main():
         num1, num2 = generate_example()
         print(f"Життя: {hizni}\nРахунок: {chet}")
         diya = input(f"{num1} + {num2} = ")
-        validation_result = validate_input(diya, num1 + num2)
-        if validation_result == "quit":
+        result = validate_input(diya, num1 + num2)
+        if result == "quit":
             print(f"Кінцевий рахунок: {chet}")
             display_leaderboard()
             break
-        elif validation_result == "Вірно":
+        elif result == "Вірно":
             print("Вірно!")
             chet += 1
-        elif validation_result == "Невірно":
+        elif result == "Невірно":
             print(f"Неправильно, правильна відповідь: {num1 + num2}")
             hizni -= 1
             if hizni == 0:
